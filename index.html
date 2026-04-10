@@ -530,9 +530,9 @@
                     </div>
                     <h3>Técnicos</h3>
                     <p>¿Sos técnico profesional? Accedé a nuestra lista de precios exclusiva, armá tu pedido y enviálo por WhatsApp.</p>
-                    <a href="https://emmarefrigeracion.github.io/lista_precios/preciostecnicos.html" class="btn btn-gris">
+                    <button class="btn btn-gris" onclick="mostrarModalAcceso()">
                         <i class="fas fa-list"></i> Lista de Precios para Técnicos
-                    </a>
+                    </button>
                 </div>
             </div>
             <p style="text-align: center; margin-top: 20px; color: #666; font-size: 14px;">
@@ -686,6 +686,32 @@
                 div.innerHTML = '';
             }, 5000);
         }
+      function mostrarModalAcceso() {
+            document.getElementById('modalAcceso').style.display = 'flex';
+        }
+        
+        function cerrarModal() {
+            document.getElementById('modalAcceso').style.display = 'none';
+        }
+        
+        function validarAcceso() {
+            const password = document.getElementById('passAcceso').value;
+            
+            if (password === "tecnico2026") {
+                window.location.href = "https://emmarefrigeracion.github.io/lista_precios/preciostecnicos.html";
+            } else {
+                alert("Contraseña incorrecta");
+                document.getElementById('passAcceso').value = "";
+            }
+        }
+        
+        // Cerrar modal al hacer clic fuera
+        window.onclick = function(event) {
+            const modal = document.getElementById('modalAcceso');
+            if (event.target == modal) {
+                cerrarModal();
+            }
+        }  
     </script>
 </body>
 </html>
