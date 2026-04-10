@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMMA Refrigeración - Servicio Técnico y Venta de Electrodomésticos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: #dc2626;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .contacto-header {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .contacto-header a {
+            color: #b2f0b2;
+            text-decoration: none;
+        }
+
+        .contacto-header a:hover {
+            text-decoration: underline;
+        }
+
+        /* Navegación */
+        .nav {
+            background: #1a1a2e;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 12px;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 20px;
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+
+        .nav a:hover {
+            background: #dc2626;
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Secciones */
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .section-title {
+            color: #dc2626;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-left: 4px solid #dc2626;
+            padding-left: 15px;
+        }
+
+        /* Grid de servicios */
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .servicio-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 1px solid #eee;
+        }
+
+        .servicio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .servicio-card i {
+            font-size: 2.5rem;
+            color: #dc2626;
+            margin-bottom: 15px;
+        }
+
+        .servicio-card h3 {
+            margin-bottom: 10px;
+            color: #1a1a2e;
+        }
+
+        /* Tarjetas de opciones (Clientes / Técnicos) */
+        .opciones-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .opcion-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 35px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid #e0e0e0;
+        }
+
+        .opcion-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            border-color: #dc2626;
+        }
+
+        .opcion-icon {
+            font-size: 3rem;
+            color: #dc2626;
+            margin-bottom: 20px;
+        }
+
+        .opcion-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #1a1a2e;
+        }
+
+        .opcion-card p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-rojo {
+            background: #dc2626;
+            color: white;
+        }
+
+        .btn-rojo:hover {
+            background: #b91c1c;
+            transform: scale(1.05);
+        }
+
+        .btn-verde {
+            background: #25D366;
+            color: white;
+        }
+
+        .btn-verde:hover {
+            background: #128C7E;
+            transform: scale(1.05);
+        }
+
+        .btn-gris {
+            background: #1a1a2e;
+            color: white;
+        }
+
+        .btn-gris:hover {
+            background: #dc2626;
+        }
+
+        /* Formulario de contacto */
+        
+        #form-contacto {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #1a1a2e;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            background: #ffe4f0;
+            border: 1px solid #dc2626;
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #dc2626;
+        }
+
+        /* Info de contacto */
+        .info-contacto {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .info-item {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+
+        .info-item i {
+            font-size: 2rem;
+            color: #dc2626;
+            margin-bottom: 10px;
+        }
+
+        .info-item h4 {
+            margin-bottom: 8px;
+            color: #1a1a2e;
+        }
+
+        /* Mapa */
+        .mapa {
+            width: 100%;
+            height: 350px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .mapa iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Botón flotante de WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            text-decoration: none;
+            border: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #128C7E;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        /* Tooltip para WhatsApp */
+        .whatsapp-tooltip {
+            position: fixed;
+            bottom: 100px;
+            left: 30px;
+            background: #1a1a2e;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+            pointer-events: none;
+        }
+
+        .whatsapp-float:hover + .whatsapp-tooltip {
+            opacity: 1;
+            visibility: visible;
+            bottom: 95px;
+        }
+
+        /* Botón volver arriba */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #dc2626;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 99;
+            border: none;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: #b91c1c;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a2e;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .footer a {
+            color: #b2f0b2;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .section {
+                padding: 25px;
+            }
+            
+            .nav {
+                gap: 10px;
+            }
+            
+            .nav a {
+                padding: 5px 12px;
+                font-size: 14px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+                bottom: 20px;
+                left: 20px;
+            }
+            
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón volver arriba -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/5493512447120" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <div class="whatsapp-tooltip">
+        📱 Consultar por WhatsApp
+    </div>
+
+    <div class="header">
+        <h1>EMMA Refrigeración</h1>
+        <p>Servicio Técnico Especializado | Venta de Electrodomésticos</p>
+        <div class="contacto-header">
+            <span>📧 <a href="mailto:emmarefrigeracion86@gmail.com">emmarefrigeracion86@gmail.com</a></span>&nbsp;&nbsp;|&nbsp;&nbsp;
+            <span>📱 <a href="https://wa.me/5493512447120" target="_blank">WhatsApp: 351-2447120</a></span>
+        </div>
+    </div>
+
+    <nav class="nav">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#opciones">Acceso Rápido</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#ubicacion">Ubicación</a>
+    </nav>
+
+    <div class="container">
+        <!-- Inicio / Quiénes somos -->
+        <section id="inicio" class="section">
+            <h2 class="section-title">Quiénes Somos</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                <strong>EMMA Refrigeración</strong> es una empresa especializada en la venta de repuestos y accesorios para refrigeración, 
+                venta de electrodomésticos nuevos y usados con garantía, así como en la reparación de heladeras, freezers, aires acondicionados y electrodomésticos en general.
+            </p>
+            <p>
+                Contamos con amplia experiencia en el rubro, ofreciendo productos de calidad y un servicio técnico confiable. 
+                Nuestro compromiso es brindar soluciones rápidas y efectivas a nuestros clientes, tanto particulares como técnicos profesionales.
+            </p>
+        </section>
+
+        <!-- Servicios -->
+        <section id="servicios" class="section">
+            <h2 class="section-title">Nuestros Servicios</h2>
+            <div class="servicios-grid">
+                <div class="servicio-card">
+                    <i class="fas fa-temperature-low"></i>
+                    <h3>Reparación de Heladeras y Freezers</h3>
+                    <p>Soluciones rápidas para equipos domésticos y comerciales.</p>
+                </div>
+                <div class="servicio-card">
+                    <i class="fas fa-wind"></i>
+                    <h3>Reparación de Aire Acondicionado</h3>
+                    <p>Instalación, mantenimiento y reparación de equipos split y portátiles.</p>
+                </div>
+                <div class="servicio-card">
+                    <i class="fas fa-microchip"></i>
+                    <h3>Venta de Repuestos</h3>
+                    <p>Amplio stock de repuestos originales y alternativos.</p>
+                </div>
+                <div class="servicio-card">
+                    <i class="fas fa-store"></i>
+                    <h3>Venta de Electrodomésticos</h3>
+                    <p>Electrodomésticos nuevos y usados con garantía. Consultá por stock.</p>
+                </div>
+                <div class="servicio-card">
+                    <i class="fas fa-tools"></i>
+                    <h3>Reparación de Electrodomésticos</h3>
+                    <p>Diagnóstico y reparación de lavarropas, secarropas, hornos, microondas y más.</p>
+                </div>
+                <div class="servicio-card">
+                    <i class="fas fa-truck"></i>
+                    <h3>Servicio a Domicilio</h3>
+                    <p>Atención personalizada en tu hogar. Zona de cobertura: Pilar y alrededores.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Acceso Rápido: Clientes y Técnicos -->
+        <section id="opciones" class="section">
+            <h2 class="section-title">Acceso Rápido</h2>
+            <div class="opciones-grid">
+                <!-- Opción Clientes -->
+                <div class="opcion-card">
+                    <div class="opcion-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <h3>Clientes</h3>
+                    <p>¿Sos cliente particular y necesitas un servicio técnico, venta de electrodomésticos o consulta? Completá el formulario y te contactaremos a la brevedad.</p>
+                    <button class="btn btn-rojo" onclick="document.getElementById('contacto').scrollIntoView({behavior: 'smooth'})">
+                        <i class="fas fa-envelope"></i> Contactar ahora
+                    </button>
+                </div>
+
+                <!-- Opción Técnicos -->
+                <div class="opcion-card">
+                    <div class="opcion-icon">
+                        <i class="fas fa-user-cog"></i>
+                    </div>
+                    <h3>Técnicos</h3>
+                    <p>¿Sos técnico profesional? Accedé a nuestra lista de precios exclusiva, armá tu pedido y enviálo por WhatsApp.</p>
+                    <a href="lista_precios_tecnicos.html" class="btn btn-gris">
+                        <i class="fas fa-list"></i> Lista de Precios para Técnicos
+                    </a>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 20px; color: #666; font-size: 14px;">
+                * Si ya tenés usuario técnico, podés acceder directamente a la lista de precios con carrito de compras.
+            </p>
+        </section>
+
+        <!-- Formulario de Contacto para Clientes -->
+        <section id="contacto" class="section">
+            <h2 class="section-title">Contacto para Clientes</h2>
+            <p style="margin-bottom: 20px;">Completá el formulario y te responderemos a la brevedad.</p>
+            
+            <form id="form-contacto">
+                <div class="form-group">
+                    <label>Nombre completo *</label>
+                    <input type="text" id="nombre-cliente" required placeholder="Ej: Juan Pérez">
+                </div>
+                
+                <div class="form-group">
+                    <label>Teléfono / WhatsApp *</label>
+                    <input type="tel" id="telefono-cliente" required placeholder="351 123 4567">
+                </div>
+                
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="email-cliente" placeholder="correo@ejemplo.com">
+                </div>
+                
+                <div class="form-group">
+                    <label>Tipo de consulta *</label>
+                    <select id="servicio-cliente" required>
+                        <option value="">Seleccioná una opción</option>
+                        <option value="reparacion_heladera">Reparación de Heladera / Freezer</option>
+                        <option value="reparacion_aire">Reparación de Aire Acondicionado</option>
+                        <option value="reparacion_electrodomestico">Reparación de Electrodoméstico</option>
+                        <option value="venta_repuesto">Consulta por repuesto</option>
+                        <option value="venta_electrodomestico">Compra de electrodoméstico</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Mensaje *</label>
+                    <textarea id="mensaje-cliente" rows="4" required placeholder="Describí tu consulta..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-rojo" style="width: 100%;">
+                    <i class="fab fa-whatsapp"></i> Enviar consulta por WhatsApp
+                </button>
+            </form>
+            <div id="mensaje-form" style="margin-top: 15px; text-align: center;"></div>
+        </section>
+
+        <!-- Ubicación -->
+        <section id="ubicacion" class="section">
+            <h2 class="section-title">Ubicación</h2>
+            <div class="info-contacto">
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h4>Dirección</h4>
+                    <p>General Paz 1118, Pilar</p>
+                    <p>CP 5972, Provincia de Córdoba</p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <h4>Horarios de Atención</h4>
+                    <p>Lunes a Viernes: 9 a 12:30 - 16 a 19 hs</p>
+                    <p>Sábados: 9 a 12:30</p>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <h4>Contacto Directo</h4>
+                    <p>📱 <a href="https://wa.me/5493512447120" style="color: #dc2626;">351-2447120</a></p>
+                    <p>📧 <a href="mailto:emmarefrigeracion86@gmail.com" style="color: #dc2626;">emmarefrigeracion86@gmail.com</a></p>
+                </div>
+            </div>
+            <div class="mapa">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1697.6060512456074!2d-63.884825372505055!3d-31.68276908281154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9432cb4bd0d35165%3A0xae3c5316726e6346!2sBv.%20Gral.%20Paz%201118%2C%20X5972%20Pilar%2C%20C%C3%B3rdoba!5e0!3m2!1ses!2sar!4v1775840072954!5m2!1ses!2sar" style="border:0; width:100%; height:100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 EMMA Refrigeración - Todos los derechos reservados</p>
+        <p>Servicio Técnico Especializado | Venta de Electrodomésticos nuevos y usados con garantía</p>
+        <p style="margin-top: 10px;">
+            <a href="#inicio">Volver arriba</a>
+        </p>
+    </footer>
+
+    <script>
+        // Botón volver arriba
+        const backBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            backBtn.classList.toggle('show', window.scrollY > 300);
+        });
+        backBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Formulario de contacto - Enviar por WhatsApp
+        document.getElementById('form-contacto').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nombre = document.getElementById('nombre-cliente').value.trim();
+            const telefono = document.getElementById('telefono-cliente').value.trim();
+            const email = document.getElementById('email-cliente').value.trim();
+            const servicio = document.getElementById('servicio-cliente').value;
+            const mensaje = document.getElementById('mensaje-cliente').value.trim();
+            
+            if (!nombre || !telefono || !servicio || !mensaje) {
+                mostrarMensaje('Por favor completá todos los campos obligatorios.', 'error');
+                return;
+            }
+            
+            // Obtener texto de la opción seleccionada
+            const select = document.getElementById('servicio-cliente');
+            const servicioTexto = select.options[select.selectedIndex].text;
+            
+            let textoWhatsApp = 'CONSULTA DE CLIENTE - EMMA REFRIGERACION\n\n';
+            textoWhatsApp += 'Nombre: ' + nombre + '\n';
+            textoWhatsApp += 'Teléfono: ' + telefono + '\n';
+            if (email) textoWhatsApp += 'Email: ' + email + '\n';
+            textoWhatsApp += 'Consulta sobre: ' + servicioTexto + '\n';
+            textoWhatsApp += 'Mensaje: ' + mensaje + '\n\n';
+            textoWhatsApp += 'Mensaje enviado desde la página web.';
+            
+            const url = 'https://wa.me/5493512447120?text=' + encodeURIComponent(textoWhatsApp);
+            window.open(url, '_blank');
+            
+            mostrarMensaje('Consulta enviada. Te contactaremos a la brevedad.', 'success');
+            this.reset();
+        });
+        
+        function mostrarMensaje(texto, tipo) {
+            const div = document.getElementById('mensaje-form');
+            div.innerHTML = texto;
+            div.style.color = tipo === 'success' ? '#155724' : '#721c24';
+            div.style.background = tipo === 'success' ? '#d4edda' : '#f8d7da';
+            div.style.padding = '10px';
+            div.style.borderRadius = '8px';
+            setTimeout(() => {
+                div.innerHTML = '';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
